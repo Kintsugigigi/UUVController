@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Communication",
+    "\\Condition",
+    "\\Control",
+    "\\Navigation",
+    "\\Plan",
+    "\\Postman",
+    "\\Sensor",
+    "\\Tools"
+  ],
+  "SelectedNode": "\\main.cpp",
+  "PreviewInSolutionExplorer": false
+}

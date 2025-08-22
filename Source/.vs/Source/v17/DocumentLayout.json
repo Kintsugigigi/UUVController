@@ -1,0 +1,115 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Communication\\CommunicationMasterClass.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Communication\\CommunicationMasterClass.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Action\\ActionMasterClass.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionHub.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Action\\ActionHub.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.cpp||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Action\\ActionMasterClass.cpp||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ActionMasterClass.h",
+              "DocumentMoniker": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.h",
+              "RelativeDocumentMoniker": "Action\\ActionMasterClass.h",
+              "ToolTip": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.h",
+              "RelativeToolTip": "Action\\ActionMasterClass.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAA6wCEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-21T09:41:05.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ActionHub.h",
+              "DocumentMoniker": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionHub.h",
+              "RelativeDocumentMoniker": "Action\\ActionHub.h",
+              "ToolTip": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionHub.h",
+              "RelativeToolTip": "Action\\ActionHub.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-21T09:42:45.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ActionMasterClass.cpp",
+              "DocumentMoniker": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.cpp",
+              "RelativeDocumentMoniker": "Action\\ActionMasterClass.cpp",
+              "ToolTip": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Action\\ActionMasterClass.cpp*",
+              "RelativeToolTip": "Action\\ActionMasterClass.cpp*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-21T09:38:37.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CommunicationMasterClass.cpp",
+              "DocumentMoniker": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Communication\\CommunicationMasterClass.cpp",
+              "RelativeDocumentMoniker": "Communication\\CommunicationMasterClass.cpp",
+              "ToolTip": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\Communication\\CommunicationMasterClass.cpp",
+              "RelativeToolTip": "Communication\\CommunicationMasterClass.cpp",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-21T09:36:18.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "E:\\\u5510\u6D69\u5929\\code\\USVController\\Source\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAAEIAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-04T09:00:25.883Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

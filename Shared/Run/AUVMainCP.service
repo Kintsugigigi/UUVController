@@ -1,0 +1,23 @@
+#**** *.service***
+# THIS IS A GENERATED FILE, NOT RECOMMENDED TO EDIT.
+# /usr/lib/systemd/system  or   /etc/systemd/system
+# systemctl daemon-reload
+# sudo systemctl stop  AUVMainCP.service
+# sudo systemctl start AUVMainCP.service
+# sudo systemctl enable AUVMainCP.service
+# sudo systemctl disable AUVMainCP.service
+# systemctl status AUVMainCP.service
+
+[Unit]
+Description="startup service"
+After=network.target
+
+[Service]
+Type=simple
+ExecStart= /home/auv/Desktop/auv5Pi/Release/auv5Pi
+
+[Install]
+WantedBy=multi-user.target
+
+
+
