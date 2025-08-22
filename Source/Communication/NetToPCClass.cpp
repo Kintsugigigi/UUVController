@@ -72,8 +72,13 @@ void NetToPCClass::sendMessageLoop(void * __this)
     while(true)
     {
         // 姿态信息
-        std::string send_status_str = MsgWriterCooker::cookSendPCStatusMessage(_this->robotNowMode,_this->usvNavMenu,
-                                                 _this->targetMenu,_this->usvPropellerStatusMenu);
+        std::string send_status_str = MsgWriterCooker::cookSendPCStatusMessage(
+            _this->robotNowMode,
+            _this->usvNavMenu,
+            _this->targetMenu,
+            _this->usvPropellerStatusMenu,
+            &(_this->tempPidMenu) // <--- 修正这里！使用 tempPidMenu 的地址
+        );
         _this->pcSocketClass.socketSendMessage(send_status_str); //发送给上位机
 
         send_index ++;
@@ -93,8 +98,12 @@ void NetToPCClass::sendMessageLoop(void * __this)
 /** 处理从PC接收的数据 **/
 bool NetToPCClass::cookGetMessage(unsigned char get_char[], int len)
 {
-    // 处理收到的数据
-    MsgReadCooker::cookGetPCMessage((char*)get_char, robotNowMode, targetMenu);
+    MsgReadCooker::cookGetPCMessage(
+        (char*)get_char,
+        robotNowMode, // 注意：根据新签名，这里可能也需要传指针
+        targetMenu,   // 注意：根据新签名，这里可能也需要传指针
+        &tempPidMenu   // <--- 添加这个缺失的第 4 个参数 (地址)
+    );
 
     return false;
 }

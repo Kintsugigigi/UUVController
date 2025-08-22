@@ -44,6 +44,11 @@ private:
     // 控制指令发送间隔  毫秒
     int interval_manual = 100000;
 
+    // 为了修复 sendMessageLoop 的调用 (需要 PID* 类型)
+    ControlHub::ContolPIDMenuType tempPidMenu;
+
+    // 为了修复 cookGetMessage 的调用 (需要 Limit& 类型)
+    ControlHub::RobotLimitType tempLimitMenu;
     // 从上位机获取消息 线程
     std::thread get_msg_thread;
     // 向上位机发送消息 线程
