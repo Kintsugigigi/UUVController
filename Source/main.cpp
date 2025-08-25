@@ -21,6 +21,135 @@
 #include "Tools/GISTools.hpp"
 #include "Tools/LogToTextClass.h"
 #include "Tools/DataFormatTools.hpp"
+// 新增: 串口相关头文件
+#include <termios.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/select.h>
+#include <errno.h>
+#include <cstring>
+
+// 新增: 打开并配置串口
+static int openSerialPort(const char* device, speed_t baud)
+{
+    int fd = ::open(device, O_RDWR | O_NOCTTY | O_NONBLOCK);
+    if (fd < 0) {
+        spdlog::error("打开串口失败 {} errno={}", device, errno);
+        return -1;
+    }
+
+    // 清除非阻塞标志，后续用select控制阻塞行为
+    int flags = fcntl(fd, F_GETFL, 0);
+    fcntl(fd, F_SETFL, flags & ~O_NONBLOCK);
+
+    termios tty{};
+    if (tcgetattr(fd, &tty) != 0) {
+        spdlog::error("tcgetattr 失败 errno={}", errno);
+        ::close(fd);
+        return -1;
+    }
+
+    cfmakeraw(&tty);
+    // 波特率
+    cfsetispeed(&tty, baud);
+    cfsetospeed(&tty, baud);
+
+    // 8N1
+    tty.c_cflag &= ~PARENB;
+    tty.c_cflag &= ~CSTOPB;
+    tty.c_cflag &= ~CSIZE;
+    tty.c_cflag |= CS8;
+
+    // 本地连接，启用接收
+    tty.c_cflag |= (CLOCAL | CREAD);
+
+    // 关闭硬件/软件流控
+    tty.c_cflag &= ~CRTSCTS;
+    tty.c_iflag &= ~(IXON | IXOFF | IXANY);
+
+    // 设置读取行为: 立即返回由select控制
+    tty.c_cc[VMIN]  = 0;
+    tty.c_cc[VTIME] = 0;
+
+    if (tcsetattr(fd, TCSANOW, &tty) != 0) {
+        spdlog::error("tcsetattr 失败 errno={}", errno);
+        ::close(fd);
+        return -1;
+    }
+
+    tcflush(fd, TCIOFLUSH);
+    spdlog::info("串口已打开 {} 波特率已设置", device);
+    return fd;
+}
+
+// 新增: 深度计读取线程函数（原样输出每一行，若为二进制流也会输出十六进制片段）
+static void depthReader(const char* device, speed_t baud)
+{
+    int fd = openSerialPort(device, baud);
+    if (fd < 0) {
+        spdlog::error("深度计读取线程启动失败，无法打开串口 {}", device);
+        return;
+    }
+
+    std::string line;
+    char buf[256];
+
+    while (true) {
+        fd_set rfds;
+        FD_ZERO(&rfds);
+        FD_SET(fd, &rfds);
+        timeval tv{};
+        tv.tv_sec = 1;
+        tv.tv_usec = 0;
+
+        int rv = select(fd + 1, &rfds, nullptr, nullptr, &tv);
+        if (rv < 0) {
+            spdlog::error("select 出错 errno={}", errno);
+            break;
+        } else if (rv == 0) {
+            // 超时，无数据
+            continue;
+        }
+
+        ssize_t n = ::read(fd, buf, sizeof(buf));
+        if (n < 0) {
+            if (errno == EAGAIN || errno == EINTR) continue;
+            spdlog::error("串口读取失败 errno={}", errno);
+            break;
+        } else if (n == 0) {
+            // 串口被关闭
+            spdlog::warn("串口无数据或被关闭");
+            break;
+        } else {
+            // 将数据按行输出（适用于以 \n 结尾的ASCII协议）
+            for (ssize_t i = 0; i < n; ++i) {
+                char c = buf[i];
+                if (c == '\r') continue;
+                if (c == '\n') {
+                    if (!line.empty()) {
+                        spdlog::info("Depth RX: {}", line);
+                        line.clear();
+                    }
+                } else {
+                    line.push_back(c);
+                }
+            }
+
+            // 如果不是文本协议，仍然提供十六进制观察数据片段
+            std::string hexDump;
+            hexDump.reserve(n * 3);
+            for (ssize_t i = 0; i < n; ++i) {
+                char tmp[4];
+                snprintf(tmp, sizeof(tmp), "%02X ", static_cast<unsigned char>(buf[i]));
+                hexDump += tmp;
+            }
+            spdlog::debug("Depth RX HEX: {}", hexDump);
+        }
+    }
+
+    ::close(fd);
+    spdlog::info("深度计读取线程结束，串口已关闭");
+}
 
 int main()
 {
@@ -83,6 +212,14 @@ int main()
 //    logClass.soundMenu = &commMasterClass.soundClass.soundMenu;
 //    logClass.startLog();
 
+    // 新增: 启动深度计串口读取线程
+    // 若你在树莓派上使用的是 UART0，设备通常为 /dev/serial0 或 /dev/ttyAMA0
+    std::thread depth_thread([](){
+        depthReader("/dev/serial0", B115200);
+        // 如需更换设备或波特率，改这里：depthReader("/dev/ttyAMA0", B9600);
+    });
+    depth_thread.detach();
+
     while (true)
     {
 
@@ -103,8 +240,6 @@ int main()
         {
             spdlog::info("USV主控掉线");
         }
-
-
 
         spdlog::info("机器人运动模式:({0:d}) 机器人警告:({1:d})",
                      controlMasterClass.robotNowMode.mission_mode, controlMasterClass.robotNowMode.warning_type);

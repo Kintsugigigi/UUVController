@@ -41,30 +41,24 @@ public:
     void startAction();
 
 private:
-
     // 控制间隔 毫秒
     int interval_num = 1000;
     // 消息队列 锁
     std::mutex mutex_action_cout;
-
     // 控制线程
     std::thread get_control_thread;
     // 控制循环
     static void controlLoop(void*);
-
     // 获取控制命令循环
     static void getControlLoop(void*);
-
     // 运动控制命令解析
     void cookCommandForMove(const char[], const int&);
     // 灯控制命令解析
     void cookCommandForLED(const char[], const int&);
-
     // 停止
     void stopSet();
     // 舵机归零位
     void zeroSet();
-
     // 看门狗 线程
     std::thread watch_dog_thread;
     // 看门狗循环

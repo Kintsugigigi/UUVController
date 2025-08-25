@@ -45,6 +45,7 @@ void ActionMasterClass::getControlLoop(void * __this)
     ActionMasterClass * _this =(ActionMasterClass *)__this;
     while (true)
     {
+        // 阻塞式生产消费者队列，内部有锁，保证多线程拿或放不冲突，并且空着的时候会阻塞，非空时take再取，会阻塞
         std::map get_map = _this->action_queue.take();
 
         //std::lock_guard<std::mutex> lock(_this->mutex_action_cout);

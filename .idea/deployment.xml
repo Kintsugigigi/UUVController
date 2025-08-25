@@ -2,6 +2,21 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="Pi (5eedd07a-5610-4c7a-9326-0a2304f89ef9)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.xFLjfOZk7P/USVController" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-pi-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remote-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-pi-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remote-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
       <paths name="UbuntuVM (d6a50fb6-51cc-4dd1-a3c4-e160708bcd35)">
         <serverdata>
           <mappings>
